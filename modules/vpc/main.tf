@@ -3,6 +3,9 @@ resource "aws_vpc" "terraform_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+tags = {
+  Name = "manjunath-tf-vpc"
+}
 }
 
 resource "aws_subnet" "public_subnet_1a" {
