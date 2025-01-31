@@ -1,6 +1,6 @@
 # Terraform Configuration for VPC, RDS, and EC2
 
-This repository contains Terraform configurations for setting up a Virtual Private Cloud (VPC), Relational Database Service (RDS), and Elastic Compute Cloud (EC2) instances using a modular approach.
+This repository contains Terraform configurations for setting up a Virtual Private Cloud (VPC), Relational Database Service (RDS), and Elastic Compute Cloud (EC2) instance using a modular approach.
 
 ## Modules
 
