@@ -16,10 +16,19 @@ To use these modules, include them in your Terraform configuration files and pro
 
 - Terraform = 1.10
 - AWS Provider >= 5.0
+- S3 backend for storing the Terraform state
 
 ## Example
 
 ```hcl
+terraform {
+  backend "s3" {
+    bucket = "your-terraform-state-bucket"
+    key    = "path/to/your/terraform.tfstate"
+    region = "us-west-2"
+  }
+}
+
 module "vpc" {
     source = "./modules/vpc"
     # Add required variables
