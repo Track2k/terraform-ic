@@ -3,8 +3,8 @@ resource "aws_db_instance" "tf_rds_instance" {
   engine                 = "postgres"
   engine_version         = "16.3"
   instance_class         = "db.t3.micro"
-  username               = "foo"
-  password               = "foobarbaz"
+  username               = var.db_username
+  password               = var.db_password
   parameter_group_name   = "default.postgres16"
   publicly_accessible    = false
   skip_final_snapshot    = true

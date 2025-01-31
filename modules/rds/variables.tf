@@ -22,3 +22,12 @@ variable "vpc_id" {
   type        = string
   default = "value.module.vpc.vpc_id"
 }
+variable "db_username" {
+  type        = string
+  sensitive   = true
+}
+
+variable "db_password" {
+  type        = string
+  sensitive   = true
+}
