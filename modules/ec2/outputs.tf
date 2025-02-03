@@ -1,3 +1,3 @@
 output "public_ip" {
-  value = aws_instance.instance1.public_ip
+  value = [for instance in aws_instance.tf-instance : instance.public_ip]
 }

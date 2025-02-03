@@ -1,4 +1,5 @@
 resource "aws_db_instance" "tf_rds_instance" {
+  count = 1
   db_name                = "manjunath5tf5db"
   engine                 = "postgres"
   engine_version         = "16.3"

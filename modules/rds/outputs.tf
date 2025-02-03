@@ -1,8 +1,8 @@
 output "aws_db_instance_id" {
-  value = aws_db_instance.tf_rds_instance.id
+  value = [ for dbinstance in aws_db_instance.tf_rds_instance : dbinstance.id ]
   
 }
 
 output "aws_db_instance_address" {
-  value = aws_db_instance.tf_rds_instance.address
+  value = [ for dbinstanceaddress in aws_db_instance.tf_rds_instance : dbinstanceaddress.address ]
 }
