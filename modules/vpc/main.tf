@@ -99,7 +99,7 @@ resource "aws_route_table_association" "public_route_associationC" {
 
 resource "aws_route_table_association" "private_route_associationA"{
   subnet_id = aws_subnet.private_subnet_1a.id
-  route_table_id = aws_route_table.private_route.id
+  route_table_id = aws_route_table.private_route_NAT.id
 }
 
 resource "aws_route_table_association" "private_route_associationB"{
@@ -110,4 +110,28 @@ resource "aws_route_table_association" "private_route_associationB"{
 resource "aws_route_table_association" "private_route_associationC"{
   subnet_id = aws_subnet.private_subnet_1c.id
   route_table_id = aws_route_table.private_route.id
+}
+resource "aws_eip" "NAT" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "tf-nat" {
+  allocation_id = aws_eip.NAT.id
+  subnet_id     = aws_subnet.public_subnet_1a.id
+
+  tags = {
+    Name = "gw-nat"
+  }
+
+   depends_on = [aws_internet_gateway.vpc_igw]
+}
+
+resource "aws_route_table" "private_route_NAT" {
+  vpc_id = aws_vpc.terraform_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.tf-nat.id
+}
+
 }
